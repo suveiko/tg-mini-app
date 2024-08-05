@@ -26,7 +26,7 @@ function App() {
       </div>
       {/* Here we add our button with alert callback */}
       <div className="card">
-        <button onClick={() => WebApp.showAlert(`Тоха мамонт`)}>
+        <button onClick={() => WebApp.showAlert('hello')}>
           тап
         </button>
       </div>
