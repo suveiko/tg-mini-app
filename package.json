@@ -2,9 +2,11 @@
   "name": "tg-mini-app",
   "private": true,
   "version": "0.0.0",
-  "type": "module",
+  "type": "commonjs",
   "scripts": {
-    "start:bot": "npx ts-node src/telegram-bot/telegram-bot.ts",
+    "start:bot": "concurrently \"pnpm start:bot:tsc\" \"pnpm start:bot:node\"",
+    "start:bot:tsc": "tsc src/telegram-bot/telegram-bot.ts",
+    "start:bot:node": "node src/telegram-bot/telegram-bot.js",
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
@@ -14,11 +16,14 @@
     "@supabase/supabase-js": "^2.45.1",
     "@twa-dev/sdk": "^7.0.0",
     "@vitejs/plugin-basic-ssl": "^1.1.0",
+    "concurrently": "^8.2.2",
+    "dotenv": "^16.4.5",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "telegraf": "^4.16.3"
   },
   "devDependencies": {
+    "@rollup/plugin-replace": "^5.0.7",
     "@types/node": "^22.1.0",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",

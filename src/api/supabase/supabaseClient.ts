@@ -1,4 +1,5 @@
 import { createClient } from "@supabase/supabase-js";
+import "dotenv/config";
 
 const options = {
   auth: {
@@ -9,7 +10,7 @@ const options = {
 };
 
 export const supabaseClient = createClient(
-  import.meta.env.VITE_SUPABASE_URL,
-  import.meta.env.VITE_SUPABASE_ANON_KEY,
+  process.env.VITE_SUPABASE_URL as string,
+  process.env.VITE_SUPABASE_ANON_KEY as string,
   options
 );
